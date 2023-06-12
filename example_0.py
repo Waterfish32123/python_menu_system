@@ -29,11 +29,15 @@ def select_menu():
         print("Please select a dish (enter dish name or number, enter 'done' to finish):")
         types = set(dish["type"] for dish in menu.values())
         print(types)
-        for t in types:
-            print(f"{t}:")
-            for i, dish in enumerate(menu.keys(), start=1):
-                if menu[dish]["type"] == t:
-                    print(f"{i}. {dish}(${menu[dish]['price']})")
+        # for t in types:
+            # print(f"{t}:")
+        prevType = ""
+        for i, dish in enumerate(menu.keys(), start=1):
+            # if menu[dish]["type"] == t:
+            if menu[dish]['type'] != prevType:
+                print(f"{menu[dish]['type']}:")
+                prevType = menu[dish]['type']
+            print(f"{i}. {dish}(${menu[dish]['price']})")
         choice = input("Enter: ")
         if choice == "done":
             break
