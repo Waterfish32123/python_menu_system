@@ -31,9 +31,9 @@ def select_menu():
         print(types)
         for t in types:
             print(f"{t}:")
-            for i, (dish, info) in enumerate(menu.items(), start=1):
-                if info["type"] == t:
-                    print(f"{i}. {dish}(${info['price']})")
+            for i, dish in enumerate(menu.keys(), start=1):
+                if menu[dish]["type"] == t:
+                    print(f"{i}. {dish}(${menu[dish]['price']})")
         choice = input("Enter: ")
         if choice == "done":
             break
